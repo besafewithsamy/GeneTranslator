@@ -18,8 +18,26 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
     <header className="border-b border-zinc-300 dark:border-white/10">
       <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-5 py-4">
         <div className="flex items-center gap-3">
-          <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/20 font-mono text-lg font-semibold text-violet-700 dark:text-violet-300">
-            G
+          <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/20">
+            <svg width="22" height="22" viewBox="0 0 64 64" fill="none" aria-hidden>
+              <g stroke-linecap="round">
+                <path d="M22 8 C40 15, 40 23, 22 30 C4 37, 4 45, 22 52" stroke="#8b5cf6" stroke-width="5"/>
+                <path d="M42 8 C24 15, 24 23, 42 30 C60 37, 60 45, 42 52" stroke="#0ea5e9" stroke-width="5"/>
+                <g stroke="currentColor" stroke-width="3.5" opacity="0.55" className="text-zinc-500">
+                  <line x1="27" y1="15" x2="37" y2="15"/>
+                  <line x1="23" y1="23" x2="41" y2="23"/>
+                  <line x1="22" y1="30" x2="42" y2="30"/>
+                  <line x1="12" y1="38" x2="52" y2="38"/>
+                  <line x1="11" y1="45" x2="53" y2="45"/>
+                </g>
+              </g>
+              <g>
+                <circle cx="22" cy="8" r="4" fill="#8b5cf6"/>
+                <circle cx="42" cy="8" r="4" fill="#0ea5e9"/>
+                <circle cx="22" cy="52" r="4" fill="#8b5cf6"/>
+                <circle cx="42" cy="52" r="4" fill="#0ea5e9"/>
+              </g>
+            </svg>
           </span>
           <div>
             <p className="text-[17px] font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">GeneTranslator</p>
