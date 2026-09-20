@@ -16,7 +16,7 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
 
   return (
     <header className="border-b border-zinc-300 dark:border-white/10">
-      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-6 gap-y-3 px-5 py-4">
+      <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-4 gap-y-2 px-4 py-3 sm:gap-x-6 sm:px-5 sm:py-4">
         <div className="flex items-center gap-3">
           <span aria-hidden className="flex h-9 w-9 items-center justify-center rounded-lg bg-violet-500/20">
             <svg width="22" height="22" viewBox="0 0 64 64" fill="none" aria-hidden>
@@ -41,7 +41,7 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
           </span>
           <div>
             <p className="text-[17px] font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">GeneTranslator</p>
-            <p className="font-mono text-[11px] tracking-widest text-zinc-500">RNA → DNA → PROTEIN</p>
+            <p className="hidden font-mono text-[11px] tracking-widest text-zinc-500 min-[420px]:block">{t('brand.tagline')}</p>
           </div>
         </div>
         <nav className="ml-auto flex items-center gap-1" aria-label="Primary">
@@ -50,7 +50,7 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
               key={item.id}
               onClick={() => onNav(item.id)}
               aria-current={view === item.id ? 'page' : undefined}
-              className={`rounded-md px-3 py-1.5 text-sm transition-colors ${
+              className={`min-h-[36px] rounded-md px-2.5 py-1.5 text-sm transition-colors sm:px-3 ${
                 view === item.id
                   ? 'bg-zinc-900/10 text-zinc-900 dark:bg-white/10 dark:text-zinc-100'
                   : 'text-zinc-500 hover:bg-zinc-900/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200'

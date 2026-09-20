@@ -1,3 +1,6 @@
+import { Capacitor } from '@capacitor/core';
+import { Directory, Filesystem } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
 import type { AnalysisResult } from './biology';
 
 export function toFASTA(result: AnalysisResult): string {
@@ -58,7 +61,29 @@ export function toJSON(result: AnalysisResult): string {
   );
 }
 
-export function downloadFile(filename: string, content: string, mime: string): void {
+export function isNative(): boolean {
+  try {
+    return Capacitor.isNativePlatform();
+  } catch {
+    return false;
+  }
+}
+
+export async function downloadFile(filename: string, content: string, mime: string): Promise<void> {
+  if (isNative()) {
+    const saved = await Filesystem.writeFile({
+      path: filename,
+      data: content,
+      directory: Directory.Cache,
+    });
+    await Share.share({
+      title: 'GeneTranslator export',
+      text: filename,
+      url: saved.uri,
+      dialogTitle: 'Share export',
+    });
+    return;
+  }
   const blob = new Blob([content], { type: mime });
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');

@@ -7,6 +7,7 @@ import { CodonTablePage } from './pages/CodonTablePage';
 import { AboutPage } from './pages/AboutPage';
 import { ThemeProvider } from './theme';
 import { LangProvider, useLang } from './lang';
+import type { Key } from './i18n';
 import type { SequenceKind } from './lib/biology';
 
 function Shell() {
@@ -39,9 +40,22 @@ function Shell() {
         {view === 'about' && <AboutPage />}
       </main>
       <footer className="border-t border-zinc-200 py-6 dark:border-white/5">
-        <p className="mx-auto max-w-6xl px-5 font-mono text-[11px] text-zinc-500 dark:text-zinc-600">
-          {t('footer')}
-        </p>
+        <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-x-5 gap-y-2 px-5">
+          <p className="font-mono text-[11px] text-zinc-500 dark:text-zinc-600">
+            {t('footer')}
+          </p>
+          <nav className="ml-auto flex gap-4" aria-label="Footer">
+            {(['translator', 'exercise', 'codons', 'about'] as const).map((v) => (
+              <button
+                key={v}
+                onClick={() => setView(v)}
+                className="font-mono text-[11px] text-zinc-500 transition hover:text-zinc-900 dark:text-zinc-600 dark:hover:text-zinc-300"
+              >
+                {t(`nav.${v}` as Key)}
+              </button>
+            ))}
+          </nav>
+        </div>
       </footer>
       <ToastStack toasts={toasts} />
     </div>

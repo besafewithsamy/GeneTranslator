@@ -28,7 +28,7 @@ export function CodonCard({ item, active, onHover }: Props) {
         onBlur={() => onHover(null)}
         aria-label={`Codon ${item.codon}, ${name}, ${typeLabel}`}
         style={{ animationDelay: `${Math.min(item.index, 20) * 45}ms` }}
-        className={`codon-pop w-[76px] rounded-lg border bg-zinc-900/[0.03] px-2 py-2 text-center transition-all hover:-translate-y-0.5 hover:bg-zinc-900/[0.06] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] ${
+        className={`codon-pop w-[72px] rounded-lg border bg-zinc-900/[0.04] px-2 py-2 text-center transition-all hover:-translate-y-0.5 hover:bg-zinc-900/[0.07] sm:w-[76px] dark:bg-white/[0.03] dark:hover:bg-white/[0.06] ${
           RING[item.type]
         } ${active ? 'border-violet-500 bg-violet-500/15 dark:border-violet-400 dark:bg-violet-500/15' : ''} ${item.skipped ? 'opacity-35' : ''}`}
       >

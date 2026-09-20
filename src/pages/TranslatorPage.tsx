@@ -123,25 +123,9 @@ export function TranslatorPage({ notify, externalSequence, externalKind, onConsu
 
   return (
     <div>
-      <div className="mb-3 flex items-center gap-2" role="group" aria-label={t('input.kind.label')}>
-        <span className="text-xs text-zinc-500">{t('input.kind.label')}</span>
-        {(['rna', 'dna'] as SequenceKind[]).map((k) => (
-          <button
-            key={k}
-            onClick={() => switchKind(k)}
-            aria-pressed={kind === k}
-            className={`rounded-md px-3 py-1 font-mono text-xs uppercase transition ${
-              kind === k
-                ? 'bg-violet-500/25 text-violet-900 dark:text-violet-200'
-                : 'border border-zinc-300 text-zinc-500 hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5'
-            }`}
-          >
-            {k}
-          </button>
-        ))}
-        <span className="font-mono text-[11px] text-zinc-400 dark:text-zinc-600">
-          {kind === 'dna' ? t('kind.dna') : t('kind.rna')} · {alphabet}
-        </span>
+      <div className="mb-6">
+        <h1 className="text-xl font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">{t('nav.translator')}</h1>
+        <p className="mt-1 text-sm text-zinc-500">{t('translator.subtitle')}</p>
       </div>
 
       <SequenceEditor
@@ -155,41 +139,63 @@ export function TranslatorPage({ notify, externalSequence, externalKind, onConsu
         analyzing={analyzing}
       />
 
-      <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3">
-        <div className="flex items-center gap-2" role="group" aria-label={t('frame.label')}>
-          <span className="text-xs text-zinc-500">{t('frame.label')}</span>
-          {([1, 2, 3] as ReadingFrame[]).map((f) => (
-            <button
-              key={f}
-              onClick={() => switchFrame(f)}
-              aria-pressed={frame === f}
-              className={`rounded-md px-3 py-1 font-mono text-xs transition ${
-                frame === f
-                  ? 'bg-violet-500/25 text-violet-900 dark:text-violet-200'
-                  : 'border border-zinc-300 text-zinc-500 hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5'
-              }`}
-            >
-              +{f}
+      <div className="mt-4 rounded-xl border border-zinc-300 bg-zinc-900/[0.04] px-4 py-3 dark:border-white/10 dark:bg-white/[0.03]">
+        <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+          <div className="flex items-center gap-2" role="group" aria-label={t('input.kind.label')}>
+            <span className="text-xs text-zinc-500">{t('input.kind.label')}</span>
+            {(['rna', 'dna'] as SequenceKind[]).map((k) => (
+              <button
+                key={k}
+                onClick={() => switchKind(k)}
+                aria-pressed={kind === k}
+                className={`min-h-[36px] rounded-md px-3 py-1 font-mono text-xs uppercase transition ${
+                  kind === k
+                    ? 'bg-violet-500/25 text-violet-900 dark:text-violet-200'
+                    : 'border border-zinc-300 text-zinc-500 hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5'
+                }`}
+              >
+                {k}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2" role="group" aria-label={t('frame.label')}>
+            <span className="text-xs text-zinc-500">{t('frame.label')}</span>
+            {([1, 2, 3] as ReadingFrame[]).map((f) => (
+              <button
+                key={f}
+                onClick={() => switchFrame(f)}
+                aria-pressed={frame === f}
+                className={`min-h-[36px] rounded-md px-3 py-1 font-mono text-xs transition ${
+                  frame === f
+                    ? 'bg-violet-500/25 text-violet-900 dark:text-violet-200'
+                    : 'border border-zinc-300 text-zinc-500 hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5'
+                }`}
+              >
+                +{f}
+              </button>
+            ))}
+          </div>
+          <label className="flex cursor-pointer items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">
+            <input
+              type="checkbox"
+              checked={requireStart}
+              onChange={(e) => switchMode(e.target.checked)}
+              className="h-4 w-4 accent-violet-500"
+            />
+            {t('orf.label')}
+          </label>
+          <div className="ml-auto flex items-center gap-2 text-xs">
+            <span className="hidden font-mono text-[11px] text-zinc-400 dark:text-zinc-600 lg:inline">
+              {kind === 'dna' ? t('kind.dna') : t('kind.rna')} · {alphabet}
+            </span>
+            <button onClick={() => setInput(EXAMPLE_WITH_STOP[kind])} className="min-h-[36px] rounded-md px-2 font-mono text-zinc-500 transition hover:text-violet-600 dark:hover:text-violet-300">
+              {t('examples.withStop')}
             </button>
-          ))}
-        </div>
-        <label className="flex cursor-pointer items-center gap-2 text-xs text-zinc-600 dark:text-zinc-400">
-          <input
-            type="checkbox"
-            checked={requireStart}
-            onChange={(e) => switchMode(e.target.checked)}
-            className="h-3.5 w-3.5 accent-violet-500"
-          />
-          {t('orf.label')}
-        </label>
-        <div className="ml-auto flex gap-2 text-xs">
-          <button onClick={() => setInput(EXAMPLE_WITH_STOP[kind])} className="font-mono text-zinc-500 transition hover:text-violet-600 dark:hover:text-violet-300">
-            {t('examples.withStop')}
-          </button>
-          <span className="text-zinc-400 dark:text-zinc-700">·</span>
-          <button onClick={() => setInput(EXAMPLE_NO_STOP[kind])} className="font-mono text-zinc-500 transition hover:text-violet-600 dark:hover:text-violet-300">
-            {t('examples.noStop')}
-          </button>
+            <span className="text-zinc-400 dark:text-zinc-700">·</span>
+            <button onClick={() => setInput(EXAMPLE_NO_STOP[kind])} className="min-h-[36px] rounded-md px-2 font-mono text-zinc-500 transition hover:text-violet-600 dark:hover:text-violet-300">
+              {t('examples.noStop')}
+            </button>
+          </div>
         </div>
       </div>
 

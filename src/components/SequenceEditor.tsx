@@ -86,14 +86,14 @@ export function SequenceEditor({ kind, value, onChange, onAnalyze, onClear, onEx
         <button
           onClick={onAnalyze}
           disabled={analyzing}
-          className="rounded-lg bg-violet-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-violet-500 disabled:opacity-60 dark:bg-violet-500 dark:hover:bg-violet-400"
+          className="min-h-[44px] w-full rounded-lg bg-violet-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-violet-500 disabled:opacity-60 sm:w-auto dark:bg-violet-500 dark:hover:bg-violet-400"
         >
           {analyzing ? t('editor.analyzing') : t('editor.analyze')}
         </button>
-        <button onClick={onExample} className="rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-700 transition hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
+        <button onClick={onExample} className="min-h-[44px] rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-700 transition hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
           {t('editor.example')}
         </button>
-        <button onClick={onClear} className="rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-700 transition hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
+        <button onClick={onClear} className="min-h-[44px] rounded-lg border border-zinc-300 px-4 py-2 text-sm text-zinc-700 transition hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5">
           {t('editor.clear')}
         </button>
         <button onClick={onReset} className="rounded-lg px-3 py-2 text-sm text-zinc-500 transition hover:text-zinc-900 dark:hover:text-zinc-300">

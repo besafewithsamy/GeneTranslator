@@ -4,10 +4,14 @@ import { useLang } from '../lang';
 
 export function ExportControls({ result, notify }: { result: AnalysisResult; notify: (m: string) => void }) {
   const { t } = useLang();
-  const doExport = (kind: 'FASTA' | 'TXT' | 'JSON') => {
+  const doExport = async (kind: 'FASTA' | 'TXT' | 'JSON') => {
     const content = kind === 'FASTA' ? toFASTA(result) : kind === 'TXT' ? toTXT(result) : toJSON(result);
-    downloadFile(`genetranslator_protein.${kind.toLowerCase()}`, content, 'text/plain');
-    notify(t('notify.exported', { kind }));
+    try {
+      await downloadFile(`genetranslator_protein.${kind.toLowerCase()}`, content, 'text/plain');
+      notify(t('notify.exported', { kind }));
+    } catch {
+      notify(t('notify.copyFailed'));
+    }
   };
   return (
     <div className="flex flex-wrap gap-2" role="group" aria-label={t('export.title')}>

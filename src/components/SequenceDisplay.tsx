@@ -75,9 +75,9 @@ export function SequenceDisplay({
       </div>
       <div className="seq-scroll overflow-x-auto rounded-lg border border-zinc-300 bg-white px-4 py-3 dark:border-white/10 dark:bg-black/40">
         <p className={`font-mono leading-8 tracking-wider ${compact ? 'text-[15px]' : 'text-lg'}`}>
-          <span className="mr-3 select-none text-xs text-zinc-400 dark:text-zinc-600">{fivePrime} ·</span>
+          <span className="mr-3 select-none text-xs text-zinc-500 dark:text-zinc-600">{fivePrime} ·</span>
           {renderBases()}
-          <span className="ml-3 select-none text-xs text-zinc-400 dark:text-zinc-600">· {threePrime}</span>
+          <span className="ml-3 select-none text-xs text-zinc-500 dark:text-zinc-600">· {threePrime}</span>
         </p>
         {sequence.length > COLORED_LIMIT && (
           <p className="mt-1 font-mono text-[11px] text-zinc-400 dark:text-zinc-600">{t('seq.long', { n: COLORED_LIMIT })}</p>

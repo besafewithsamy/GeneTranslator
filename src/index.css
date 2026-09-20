@@ -37,7 +37,7 @@ body {
   background: rgba(139, 92, 246, 0.4);
 }
 
-textarea:focus, input:focus, button:focus-visible {
+textarea:focus-visible, input:focus-visible, button:focus-visible {
   outline: 2px solid rgba(139, 92, 246, 0.6);
   outline-offset: 2px;
 }
@@ -53,11 +53,6 @@ textarea:focus, input:focus, button:focus-visible {
   100% { opacity: 1; transform: scale(1) translateY(0); }
 }
 
-@keyframes pulse-soft {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.4; }
-}
-
 @keyframes flow-dot {
   0% { top: 0; opacity: 0; }
   15% { opacity: 1; }
@@ -66,11 +61,6 @@ textarea:focus, input:focus, button:focus-visible {
 }
 
 @keyframes caret-blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
-}
-
-@keyframes type-caret {
   0%, 100% { opacity: 1; }
   50% { opacity: 0; }
 }

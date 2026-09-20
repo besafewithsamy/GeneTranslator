@@ -38,9 +38,37 @@ function PipelineDiagram({ t }: { t: (k: Key) => string }) {
   const tl = t('ex.flow.translation');
   const nDna = t('ex.dna.normal');
   const mDna = t('ex.dna.mutant');
+  const down = <div className="text-center text-zinc-400 dark:text-zinc-600">↓</div>;
   return (
     <div className="overflow-x-auto" aria-hidden>
-      <div className="grid min-w-[520px] grid-cols-[1fr_auto_1fr] items-center gap-x-3 gap-y-1.5">
+      <div className="mx-auto grid max-w-md grid-cols-1 items-stretch gap-1.5 md:hidden">
+        <FlowNode label={nDna} />
+        {down}
+        <FlowNode label={tx} />
+        {down}
+        <FlowNode label="mRNA" />
+        {down}
+        <FlowNode label={tl} />
+        {down}
+        <FlowNode label={t('ex.compare.normalProtein')} />
+        {down}
+        <FlowNode label={mDna} />
+        {down}
+        <FlowNode label={tx} />
+        {down}
+        <FlowNode label="mRNA" />
+        {down}
+        <FlowNode label={tl} />
+        {down}
+        <FlowNode label={t('ex.compare.mutantProtein')} />
+        {down}
+        <FlowNode label={t('ex.flow.comparison')} accent />
+        {down}
+        <FlowNode label={t('ex.flow.mutation')} accent />
+        {down}
+        <FlowNode label={t('ex.flow.conclusion')} accent />
+      </div>
+      <div className="hidden min-w-[520px] grid-cols-[1fr_auto_1fr] items-center gap-x-3 gap-y-1.5 md:grid">
         <FlowNode label={nDna} />
         <span />
         <FlowNode label={mDna} />
