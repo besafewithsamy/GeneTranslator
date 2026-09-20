@@ -7,7 +7,7 @@ import { SectionTitle } from './section';
 
 export function CodonComparison({ result }: { result: ExerciseResult }) {
   const { t } = useLang();
-  const [hovered, setHovered] = useState<number | null>(null);
+  const [hovered, setHovered] = useState<string | null>(null);
   const changed = new Set(result.codonMutations.map((m) => m.codonIndex));
   const minLen = Math.min(result.normal.codons.length, result.mutant.codons.length);
 
@@ -17,6 +17,7 @@ export function CodonComparison({ result }: { result: ExerciseResult }) {
         const info = translateCodon(codon);
         const isChanged = changed.has(i);
         const isExtra = i >= minLen;
+        const key = `${side}-${i}`;
         return (
           <span
             key={`${side}-${i}`}
@@ -30,8 +31,8 @@ export function CodonComparison({ result }: { result: ExerciseResult }) {
           >
             <CodonCard
               item={{ ...info, index: i, skipped: false, terminated: info.type === 'stop' }}
-              active={hovered === i}
-              onHover={setHovered}
+              active={hovered === key}
+              onHover={(idx) => setHovered(idx === null ? null : `${side}-${idx}`)}
             />
           </span>
         );
