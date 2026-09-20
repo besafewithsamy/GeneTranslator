@@ -33,7 +33,7 @@ export function SequenceDisplay({
 
   const renderBases = () => {
     if (!colored) {
-      return <span className="text-zinc-700 dark:text-zinc-300">{sequence}</span>;
+      return <span className="break-all text-zinc-700 dark:text-zinc-300">{sequence}</span>;
     }
     const triplets: string[] = [];
     for (let i = 0; i < sequence.length; i += 3) triplets.push(sequence.slice(i, i + 3));
@@ -67,20 +67,20 @@ export function SequenceDisplay({
           <button
             onClick={async () => onCopy(await copyText(sequence))}
             aria-label={`${t('copy.label')} ${label}`}
-            className="ml-auto rounded-md border border-zinc-300 px-2 py-0.5 font-mono text-[11px] text-zinc-500 transition hover:bg-zinc-900/5 hover:text-zinc-900 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200"
+            className="ml-auto min-h-[32px] rounded-md border border-zinc-300 px-2 py-0.5 font-mono text-xs text-zinc-500 transition hover:bg-zinc-900/5 hover:text-zinc-900 dark:border-white/10 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200"
           >
             {t('copy.label')}
           </button>
         )}
       </div>
-      <div className="seq-scroll overflow-x-auto rounded-lg border border-zinc-300 bg-white px-4 py-3 dark:border-white/10 dark:bg-black/40">
-        <p className={`font-mono leading-8 tracking-wider ${compact ? 'text-[15px]' : 'text-lg'}`}>
-          <span className="mr-3 select-none text-xs text-zinc-500 dark:text-zinc-600">{fivePrime} ·</span>
+      <div className="overflow-x-auto rounded-lg border border-zinc-300 bg-white px-4 py-3 dark:border-white/10 dark:bg-black/40">
+        <div className={`flex flex-wrap items-baseline gap-y-1 font-mono leading-8 tracking-wider ${compact ? 'text-[15px]' : 'text-lg'}`}>
+          <span className="mr-3 shrink-0 select-none text-xs text-zinc-500 dark:text-zinc-600">{fivePrime} ·</span>
           {renderBases()}
-          <span className="ml-3 select-none text-xs text-zinc-500 dark:text-zinc-600">· {threePrime}</span>
-        </p>
+          <span className="ml-3 shrink-0 select-none text-xs text-zinc-500 dark:text-zinc-600">· {threePrime}</span>
+        </div>
         {sequence.length > COLORED_LIMIT && (
-          <p className="mt-1 font-mono text-[11px] text-zinc-400 dark:text-zinc-600">{t('seq.long', { n: COLORED_LIMIT })}</p>
+          <p className="mt-1 font-mono text-xs text-zinc-500 dark:text-zinc-600">{t('seq.long', { n: COLORED_LIMIT })}</p>
         )}
       </div>
     </div>

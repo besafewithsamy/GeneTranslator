@@ -41,16 +41,16 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
           </span>
           <div>
             <p className="text-[17px] font-semibold tracking-tight text-zinc-900 dark:text-zinc-100">GeneTranslator</p>
-            <p className="hidden font-mono text-[11px] tracking-widest text-zinc-500 min-[420px]:block">{t('brand.tagline')}</p>
+            <p className="hidden font-mono text-xs tracking-widest text-zinc-500 min-[420px]:block">{t('brand.tagline')}</p>
           </div>
         </div>
-        <nav className="ml-auto flex items-center gap-1" aria-label="Primary">
+        <nav className="ml-auto flex max-w-full items-center gap-1 overflow-x-auto" aria-label="Primary">
           {ITEMS.map((item) => (
             <button
               key={item.id}
               onClick={() => onNav(item.id)}
               aria-current={view === item.id ? 'page' : undefined}
-              className={`min-h-[36px] rounded-md px-2.5 py-1.5 text-sm transition-colors sm:px-3 ${
+              className={`min-h-[36px] shrink-0 rounded-md px-2.5 py-1.5 text-sm transition-colors sm:px-3 ${
                 view === item.id
                   ? 'bg-zinc-900/10 text-zinc-900 dark:bg-white/10 dark:text-zinc-100'
                   : 'text-zinc-500 hover:bg-zinc-900/5 hover:text-zinc-900 dark:text-zinc-400 dark:hover:bg-white/5 dark:hover:text-zinc-200'
@@ -60,13 +60,13 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
             </button>
           ))}
           <span aria-hidden className="mx-1 h-5 w-px bg-zinc-300 dark:bg-white/10" />
-          <div className="flex overflow-hidden rounded-md border border-zinc-300 dark:border-white/10" role="group" aria-label={t('lang.label')}>
+          <div className="flex shrink-0 overflow-hidden rounded-md border border-zinc-300 dark:border-white/10" role="group" aria-label={t('lang.label')}>
             {(['en', 'fr'] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => setLang(l)}
                 aria-pressed={lang === l}
-                className={`px-2 py-1.5 font-mono text-[11px] uppercase transition-colors ${
+                className={`shrink-0 px-2 py-1.5 font-mono text-xs uppercase transition-colors ${
                   lang === l
                     ? 'bg-violet-500/25 text-violet-900 dark:text-violet-200'
                     : 'text-zinc-500 hover:text-zinc-900 dark:text-zinc-500 dark:hover:text-zinc-200'
@@ -81,7 +81,7 @@ export function Header({ view, onNav }: { view: View; onNav: (v: View) => void }
             aria-pressed={theme === 'light'}
             title={t(theme === 'dark' ? 'theme.toggle.dark' : 'theme.toggle.light')}
             aria-label={t(theme === 'dark' ? 'theme.toggle.dark' : 'theme.toggle.light')}
-            className="ml-1 flex h-8 w-8 items-center justify-center rounded-md border border-zinc-300 text-zinc-600 transition hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5"
+            className="ml-1 flex h-8 w-8 shrink-0 items-center justify-center rounded-md border border-zinc-300 text-zinc-600 transition hover:bg-zinc-900/5 dark:border-white/10 dark:text-zinc-300 dark:hover:bg-white/5"
           >
             {theme === 'dark' ? (
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" aria-hidden>

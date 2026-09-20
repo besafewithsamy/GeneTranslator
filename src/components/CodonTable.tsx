@@ -28,7 +28,7 @@ export function CodonTable({ onUseCodon }: { onUseCodon?: (codon: string) => voi
           onChange={(e) => setQuery(e.target.value)}
           placeholder={t('codontable.search')}
           aria-label={t('codontable.search.aria')}
-          className="w-full max-w-md rounded-lg border border-zinc-300 bg-white px-4 py-2 text-sm text-zinc-900 placeholder:text-zinc-400 dark:border-white/10 dark:bg-black/40 dark:text-zinc-100 dark:placeholder:text-zinc-600 sm:w-96"
+          className="w-full max-w-md rounded-lg border border-zinc-300 bg-white px-4 py-2 text-base text-zinc-900 placeholder:text-zinc-400 dark:border-white/10 dark:bg-black/40 dark:text-zinc-100 dark:placeholder:text-zinc-600 sm:w-96"
         />
         <span className="font-mono text-xs text-zinc-400 dark:text-zinc-600">{entries.length} / 64</span>
         <span className="ml-auto flex gap-3 text-[11px]">

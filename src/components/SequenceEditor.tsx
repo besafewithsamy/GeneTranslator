@@ -80,7 +80,7 @@ export function SequenceEditor({ kind, value, onChange, onAnalyze, onClear, onEx
         placeholder={typed || examples[0]}
         spellCheck={false}
         rows={4}
-        className="seq-scroll w-full resize-y rounded-xl border border-zinc-300 bg-white p-4 font-mono text-[15px] leading-7 tracking-wider text-zinc-900 placeholder:text-zinc-400 dark:border-white/10 dark:bg-black/40 dark:text-zinc-100 dark:placeholder:text-zinc-600"
+        className="seq-scroll w-full resize-y rounded-xl border border-zinc-300 bg-white p-4 font-mono text-base leading-7 tracking-wider text-zinc-900 placeholder:text-zinc-400 dark:border-white/10 dark:bg-black/40 dark:text-zinc-100 dark:placeholder:text-zinc-600"
       />
       <div className="mt-3 flex flex-wrap items-center gap-2">
         <button
