@@ -1,13 +1,10 @@
+<img src="public/logo.png" alt="PacketKage" width="480" />
 # GeneTranslator
 
 Translate nucleotide sequences into protein. RNA → complementary DNA (cDNA) → codons → amino acids → protein, or DNA → RNA transcript → codons → protein, visualized as a step-by-step biological pipeline in a research-grade interface with light/dark themes and English/French UI.
 
 ## Screenshots
-
-> Placeholder - add screenshots after first run:
->
-> - `docs/screenshot-translator.png` - pipeline view for `AUGGCCAUUGUAUAA`
-> - `docs/screenshot-codon-table.png` - searchable codon grid
+<img src="public/pic1.png" alt="PacketKage" width="480" />
 
 ## Features
 
@@ -90,6 +87,28 @@ npm run build   # typecheck + production build
 ```
 
 Covers: valid/invalid RNA and DNA, lowercase, whitespace, start/stop codons, all 64 codons, frames +1/+2/+3, empty input, non-triplet length, GC calculation, RNA→cDNA pairing, DNA→RNA transcription, full analysis composition in both modes.
+
+## Android build
+
+The app ships as a native Android APK via Capacitor (web UI in `dist/` wrapped in a WebView, fully offline).
+
+Prereqs: Android SDK (platform 35+, build-tools) and a JDK. This repo was built with Temurin JDK 17/21 unpacked to `~/.local/share/java` (no root needed):
+
+```bash
+export JAVA_HOME=~/.local/share/java/jdk-21.0.12.1+1
+export ANDROID_HOME=~/Android/Sdk ANDROID_SDK_ROOT=~/Android/Sdk
+```
+
+Build a debug APK:
+
+```bash
+npm run build
+npx cap sync android
+./gradlew assembleDebug   # run inside android/
+adb install android/app/build/outputs/apk/debug/app-debug.apk
+```
+
+App ID `com.besafewithsamy.genetranslator`, version 1.0.0 (versionCode 1). On Android, FASTA/TXT/JSON export saves to cache and opens the system share sheet (Blob download does not work in a WebView). Launcher icons are generated from `public/favicon.svg`.
 
 ## License
 
