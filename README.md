@@ -4,7 +4,7 @@
 Translate nucleotide sequences into protein. RNA → complementary DNA (cDNA) → codons → amino acids → protein, or DNA → RNA transcript → codons → protein, visualized as a step-by-step biological pipeline in a research-grade interface with light/dark themes and English/French UI.
 
 ## Screenshots
-<img src="public/pic1.png" alt="PacketKage" width="650" />
+<img src="public/pic1.png" alt="PacketKage" width="950" />
 
 ## Features
 
